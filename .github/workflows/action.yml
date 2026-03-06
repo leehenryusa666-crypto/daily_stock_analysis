@@ -1,0 +1,19 @@
+name: 每10分钟执行任务
+
+on:
+  schedule:
+    # 每 10 分钟触发一次
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # 保持这个选项，方便你手动点击测试
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检查代码
+        uses: actions/checkout@v4
+
+      - name: 执行操作
+        run: |
+          echo "任务启动时间: $(date)"
+          # 在这里输入你实际要运行的命令
